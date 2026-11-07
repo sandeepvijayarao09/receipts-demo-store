@@ -80,3 +80,11 @@ def test_total():
     cart.add(mug())
     # 1200 + 599 shipping + 96 tax
     assert cart.total_cents() == 1895
+
+
+def test_save10_whole_cart():
+    cart = Cart()
+    cart.add(mug())
+    cart.add(tee())
+    cart.apply_coupon("SAVE10")
+    assert cart.discount_cents() == 370
